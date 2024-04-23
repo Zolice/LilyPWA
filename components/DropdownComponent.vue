@@ -5,7 +5,9 @@
     <ul tabindex="0"
       class="dropdown-content z-[1] flex flex-col p-2 shadow bg-base-100 rounded-box w-64 overflow-auto h-96 h-max-screen">
       <li v-for="item in models" :key="item" class="menu-title">
-        <button @click="selectModel(item.id)">{{ item.id }}</button>
+        <button class="active" @click="selectModel(item.id)">{{ item.id }}</button>
+        <!-- v-if="item.id == selected"  -->
+        <!-- <button v-else @click="selectModel(item.id)">{{ item.id }}</button> -->
       </li>
     </ul>
 
@@ -21,14 +23,18 @@ models.value = [{
   id: "Loading brain cells..."
 }]
 
+const apiKey = ref("")
+
 // call the openapi using existing api key to find available models
 // https://api.openai.com/v1/models \
 //   -H "Authorization: Bearer $OPENAI_API_KEY"
 
 onMounted(async () => {
+  apiKey.value = localStorage.getItem("apiKey") ?? ""
+  console.log(apiKey.value)
   const response = await fetch('https://api.openai.com/v1/models', {
     headers: {
-      'Authorization': `Bearer <OpenAI API Key>`
+      'Authorization': `Bearer ` + apiKey.value
     }
   });
 
@@ -51,6 +57,9 @@ onMounted(async () => {
       if (models.value.find((model: any) => model.id === localStorage.getItem("selectedModel"))) {
         selected.value = localStorage.getItem("selectedModel");
       }
+    }
+    else { 
+      selected.value = models.value[0].id;
     }
   } else {
     console.error('Failed to fetch models', response.status, response.statusText);
