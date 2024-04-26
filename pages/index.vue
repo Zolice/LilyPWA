@@ -39,7 +39,7 @@
             </div>
         </div>
         <div class="bg-[#1E1E1E] w-full h-screen flex flex-col">
-            <HeaderComponent />
+            <HeaderComponent @openSettings="openSettings"/>
             <div class="overflow-y-auto h-full mx-auto">
                 <MarkdownComponent name="User" icon="/LilyGPT.png" text="test" />
                 <MarkdownComponent name="User" icon="/LilyGPT.png"
@@ -84,17 +84,6 @@ useHead({
 
 const openSettings = () => {
     console.log('open settings')
+    settingsModal.showModal()
 }
 </script>
-
-
-<!-- <div class="m-4 mx-auto flex flex-row items-center border-2 border-[#555] rounded-lg w-full">
-    <textarea placeholder="Don't be shy, ask meow about anything!"
-        class="w-full p-4 bg-transparent h-16" v-model="query"/>
-    <div class="btn btn-ghost">
-        <span class="material-symbols-outlined">upload</span>
-    </div>
-    <div class="btn btn-ghost">
-        <span class="material-symbols-outlined text-[#FFC989]">send</span>
-    </div>
-</div> -->

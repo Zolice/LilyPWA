@@ -2,7 +2,7 @@
     <div class="flex flex-row justify-between content-center px-4">
         <div class="flex flex-row justify-start h-auto">
             <h1 class="my-auto font-bold text-white">Assistant: </h1>
-            <DropdownComponent/>
+            <DropdownComponent @openSettings="openSettings"/>
         </div>
         <div class="flex flex-row h-fit my-auto gap-2">
             <button class="btn">
@@ -31,5 +31,9 @@
 </template>
 
 <script setup lang="ts">
+const emit = defineEmits(['openSettings'])
 
+const openSettings = () => {
+    emit('openSettings')
+}
 </script>

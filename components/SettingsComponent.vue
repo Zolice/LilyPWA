@@ -1,6 +1,6 @@
 <template>
     <input type="checkbox" id="my_modal_7" class="modal-toggle" />
-    <div class="modal" role="dialog">
+    <dialog class="modal" id="settingsModal" role="dialog">
 
         <div class="modal-box">
             <!-- <figure><img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="car!" />
@@ -26,7 +26,7 @@
             <p class="py-4">This modal works with a hidden checkbox!</p> -->
         </div>
         <label class="modal-backdrop" for="my_modal_7">Close</label>
-    </div>
+    </dialog>
 
     <!-- <div class="modal" role="dialog">
         <div class="card w-96 glass modal">

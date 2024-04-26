@@ -24,6 +24,7 @@ models.value = [{
 }]
 
 const apiKey = ref("")
+const emit = defineEmits(['openSettings'])
 
 // call the openapi using existing api key to find available models
 // https://api.openai.com/v1/models \
@@ -78,6 +79,7 @@ const selectModel = (model: string) => {
   if (model === "Loading brain cells...") return;
 
   if (model === "Failed to fetch models!" || model === "Check your API key.") {
+    emit('openSettings')
     return;
     // Open the settings page
   }
@@ -85,5 +87,9 @@ const selectModel = (model: string) => {
   selected.value = model;
   localStorage.setItem("selectedModel", model);
   console.log(selected.value)
+}
+
+const openSettings = () => {
+    emit('openSettings')
 }
 </script>
